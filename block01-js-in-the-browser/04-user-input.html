@@ -17,9 +17,22 @@
   <body>
     <code>
       <script>
+        const input1 = prompt("First number?");
+        const input2 = prompt("Second number?");
+        const num1 = Number(input1);
+        const num2 = Number(input2);
+
+        if(isNaN(num1) || isNaN(num2)) {
+          alert("Both inputs need to be a number!")
+        } else {
+          const sum = num1 + num2;
+          const output = `${num1} + ${num2} = ${sum}`;
+
+          document.write(output)
+        }
         // Read two numbers from the user using prompt()
         // write the sum of those numbers to the document using document.write()
-      </script>
+        </script>
     </code>
   </body>
 </html>

@@ -31,8 +31,13 @@
             url: "http://www.twitter.com",
           },
         ];
-        
-        // Todo: Create a unorderd list of links from the linkList array
+
+        document.write("<ul>");
+        for(let item of linkList) {
+          const { title, url } = item
+          document.write(`<li><a href="${url}">${title}</a></li>`)
+        }
+        document.write("</ul>");
       </script>
     </code>
   </body>
