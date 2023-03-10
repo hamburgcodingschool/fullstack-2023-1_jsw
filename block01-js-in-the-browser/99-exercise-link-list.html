@@ -12,36 +12,9 @@
         font-family: sans-serif;
         line-height: 1.5;
       }
-      .lesson-info {
-        background-color: #cee5ff;
-        padding: 15px;
-        border-radius: 15px;
-      }
     </style>
   </head>
   <body>
-    <h3>Exercise: Link List</h3>
-    <div class="lesson-info">
-      <h4>Task</h4>
-      In the code below you'll find an array that constains javascripts-objects
-      with <code>{title: ..., url: ...}</code>. Use this array to render an
-      unordered list containing links where the title is the text of the link
-      and the url is the actual url linked to.<br />
-      Example: <br />
-      <code>
-        <pre>
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;url&quot;&gt;title&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;url&quot;&gt;title&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;url&quot;&gt;title&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      </pre
-        ></code
-      ><br />
-      Challenge: Only use one <code>document.write</code> and as few lines of
-      code as possible.ol
-    </div>
-    <hr />
     <code>
       <script>
         const linkList = [
@@ -59,13 +32,11 @@
           },
         ];
         let markup = "<ul>";
-        linkList.forEach(function (item) {
+        for(item of linkList) {
           markup += `<li><a href="${item.url}">${item.title}</a></li>`;
-        });
+        }
         document.write(markup + "</ul>");
       </script>
-      Work goes here!
     </code>
-    <hr />
   </body>
 </html>
