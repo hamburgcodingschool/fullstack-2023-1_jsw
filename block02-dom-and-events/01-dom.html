@@ -25,7 +25,21 @@
     <hr />
     <code>
       <script>
-        //Code goes here
+        const title = document.getElementById("title");
+        const subtitle = document.getElementById("subtitle");
+
+        console.log(title); //just one
+
+        title.style.color = "red";
+        subtitle.style.backgroundColor = "lime";
+        subtitle.innerHTML = subtitle.innerHTML.toUpperCase();
+
+        const listItems = document.querySelectorAll("ul li");
+        console.log(listItems); //multiple
+
+        listItems.forEach(function (listItem) {
+          document.write(listItem.innerText + "<br/>");
+        });
       </script>
     </code>
   </body>
