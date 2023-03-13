@@ -19,6 +19,13 @@
     <input id="text" />
     <script>
         // When the user types something we print the number of characters to the console
+
+        const input = document.getElementById("text");
+        
+        input.addEventListener("input", function (event) {
+            console.log(event);
+            console.log(input.value.length);
+        });
     </script>
 </body>
 </html>

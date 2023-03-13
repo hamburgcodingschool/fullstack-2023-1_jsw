@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <ul id="todos"></ul>
+    <input id="todo-text" placeholder="Type Todo here"/>
+    <button id="add-todo">Add Todo</button>
+  </body>
+  <script type="text/javascript">
+    // Get references to the input field and button elements
+    const todoInput = document.getElementById("todo-text");
+    const addTodoBtn = document.getElementById("add-todo");
+  
+    // Get reference to the unordered list element
+    const todoList = document.getElementById("todos");
+  
+    // Get todos from localStorage or initialize to an empty array
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  
+    // Add existing todos to the list
+    todos.forEach(todo => {
+      const todoItem = document.createElement("li");
+      todoItem.textContent = todo;
+      todoList.appendChild(todoItem);
+    });
+  
+    // Add an event listener to the button that executes the addTodo function
+    addTodoBtn.addEventListener("click", addTodo);
+  
+    // Define the addTodo function
+    function addTodo() {
+      // Get the value of the input field and trim whitespace
+      const newTodo = todoInput.value.trim();
+      
+      // If the input field is empty, do nothing
+      if (newTodo === "") {
+        return;
+      }
+      
+      // Add the new todo to the array and store in localStorage
+      todos.push(newTodo);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      
+      // Create a new list item element
+      const newTodoItem = document.createElement("li");
+      
+      // Set the text of the list item to the new todo text
+      newTodoItem.textContent = newTodo;
+      
+      // Append the new list item to the todo list
+      todoList.appendChild(newTodoItem);
+      
+      // Clear the input field
+      todoInput.value = "";
+    }
+  </script>
+  
+</html>

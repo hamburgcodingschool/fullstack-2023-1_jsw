@@ -20,7 +20,18 @@
     <ul id="todos"></ul>
   </body>
   <script type="text/javascript">
-    // 1. ask user for todo with prompt()
-    // 2. print a list of todos to the page
+    const todos = []
+
+    function clickHandler(event) {
+      let list = document.getElementById("todos");
+      let todo = prompt("What ToDo do you have?");
+
+      todos.push(todo)
+
+      const todoHtml = todos.map((todo) => (`<li>${todo}</li>`))
+      list.innerHTML = todoHtml.join("");
+    }
+    let button = document.getElementById("add-todo");
+    button.addEventListener("click", clickHandler);
   </script>
 </html>

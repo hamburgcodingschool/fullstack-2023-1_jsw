@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="key-input">Key:</label>
+    <input type="text" id="key-input">
+    
+    <label for="value-input">Value:</label>
+    <input type="text" id="value-input">
+    
+    <button onclick="saveToLocalStorage()">Save</button>
+
+    <ul id="list"></ul>
+  </body>
+  <script type="text/javascript">
+    function saveToLocalStorage() {
+      const key = document.getElementById("key-input").value;
+      const value = document.getElementById("value-input").value;
+      localStorage.setItem(key, value);
+      displayLocalStorage();
+    }
+
+    function displayLocalStorage() {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        console.log(`${key}: ${value}`);
+      }
+    }
+
+    window.onload = function() {
+      displayLocalStorage();
+    };
+  </script>
+</html>
