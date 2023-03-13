@@ -21,31 +21,11 @@
     <label for="value-input">Value:</label>
     <input type="text" id="value-input">
     
-    <button onclick="saveToLocalStorage()">Save</button>
+    <button>Save</button>
 
     <ul id="list"></ul>
   </body>
   <script type="text/javascript">
-    function saveToLocalStorage() {
-      const key = document.getElementById("key-input").value;
-      const value = document.getElementById("value-input").value;
-      localStorage.setItem(key, value);
-      displayLocalStorage();
-    }
-
-    function displayLocalStorage() {
-      const list = document.getElementById("list");
-      list.innerHTML = "";
-      
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
-        console.log(`${key}: ${value}`);
-      }
-    }
-
-    window.onload = function() {
-      displayLocalStorage();
-    };
+    // save the key/value to localstorage and display it
   </script>
 </html>

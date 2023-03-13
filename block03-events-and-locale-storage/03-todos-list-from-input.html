@@ -21,37 +21,7 @@
     <button id="add-todo">Add Todo</button>
   </body>
   <script type="text/javascript">
-    // Get references to the input field and button elements
-    const todoInput = document.getElementById("todo-text");
-    const addTodoBtn = document.getElementById("add-todo");
-
-    // Get reference to the unordered list element
-    const todoList = document.getElementById("todos");
-
-    // Add an event listener to the button that executes the addTodo function
-    addTodoBtn.addEventListener("click", addTodo);
-
-    // Define the addTodo function
-    function addTodo() {
-      // Get the value of the input field and trim whitespace
-      const newTodo = todoInput.value.trim();
-      
-      // If the input field is empty, do nothing
-      if (newTodo === "") {
-        return;
-      }
-      
-      // Create a new list item element
-      const newTodoItem = document.createElement("li");
-      
-      // Set the text of the list item to the new todo text
-      newTodoItem.textContent = newTodo;
-      
-      // Append the new list item to the todo list
-      todoList.appendChild(newTodoItem);
-      
-      // Clear the input field
-      todoInput.value = "";
-    }
+    // the user enters a todo into the input
+    // when the button is clicked add the todo to the list
   </script>
 </html>

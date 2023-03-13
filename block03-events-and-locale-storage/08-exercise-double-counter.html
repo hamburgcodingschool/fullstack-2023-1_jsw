@@ -39,58 +39,6 @@
       <button id="count-down">-</button>
     </div>
     <script>
-  /**
-       * This is my example implementation of the two counter challenge
-       * */
-       let counter1 = 0;
-      let counter2 = 0;
-      const radioButton1 = document.getElementById("counter-selector-a");
-      const radioButton2 = document.getElementById("counter-selector-b");
-      const buttonUp = document.getElementById("count-up");
-      const buttonDown = document.getElementById("count-down");
-      const counter1Element = document.getElementById("counter-a");
-      const counter2Element = document.getElementById("counter-b");
-
-      function countUp() {
-        if (radioButton1.checked) {
-          counter1 += 1;
-        } else {
-          counter2 += 1;
-        }
-        refreshCounters();
-      }
-
-      function countDown() {
-        if (radioButton1.checked) {
-          counter1 -= 1;
-        } else {
-          counter2 -= 1;
-        }
-        refreshCounters();
-      }
-      function refreshCounters() {
-        counter1Element.innerText = counter1.toString(10);
-        counter2Element.innerText = counter2.toString(10);
-      }
-
-      buttonUp.addEventListener("click", countUp);
-      buttonDown.addEventListener("click", countDown);
-
-      document.addEventListener("keypress", function (event) {
-        console.log(event);
-        if (event.key === "+") {
-          countUp();
-        }
-        if (event.key === "-") {
-          countDown();
-        }
-        if (event.key === "a") {
-          radioButton1.checked = true;
-        }
-        if (event.key === "b") {
-          radioButton2.checked = true;
-        }
-      });
       // implement the following
       // when radio-button a is selected: the + / - Buttons change Counter A
       // when radio-button b is selected: the + / - Buttons change Counter B
