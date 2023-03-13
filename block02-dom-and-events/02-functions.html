@@ -16,7 +16,46 @@
 </head>
 <body>
     <script>
-        // Code goes here
+        function test1() {
+          console.log("Hello I am a function!");
+        }
+
+        function test2(arg) {
+          console.log(`Hello I am a function with the arguments: ${arg}`);
+        }
+
+        function test3(arg, arg2) {
+          console.log(`Hello I am a function with the arguments: ${arg} and ${arg2}`);
+        }
+
+        function test4(...args) {
+          console.log(args);
+        }
+
+        function test5(arg1, arg2 = "test") {
+          console.log(`Hello I am a function with the arguments: ${arg1} and ${arg2}`);
+        }
+
+        const test6 = function () {
+          console.log("Hello! I am a anonymous function!");
+        }
+
+        const test7 = function () {
+          console.log("Hello! I am a anonymous function that is an argument!");
+        }
+
+        function myEvent(anotherFunc) {
+          console.log("myEvent is called!")
+          anotherFunc();
+        }
+
+        test1();
+        test2("something");
+        test3("something", "something1");
+        test4("something1", "something2", "something3", "something4");
+        test5("something", "something3");
+        test6();
+        myEvent(test7);
     </script>
 </body>
 </html>

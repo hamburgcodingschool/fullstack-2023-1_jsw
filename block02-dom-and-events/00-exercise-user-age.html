@@ -21,8 +21,20 @@
         // Then ask for her/his birth-date.
         // Print out the combined name and the users current age.
         // For help on how to parse birth dates, take a look at Date.parse().
+
+        const firstName = prompt("Whats your first name?");
+        const lastName = prompt("Whats your last name?");
+
+        const birthDateStr = prompt("Whats you birthdate?");
+        const today = new Date();
+        const birthDate = Date.parse(birthDateStr);
+
+        const timeSinceBirthInMs = today - birthDate;
+        const yearsSinceBirth = timeSinceBirthInMs / (1000 * 60 * 60 * 24 * 365);
+        
+        document.write(`<h1>Hello ${firstName} ${lastName}</h1>`);
+        document.write(`<h2>You are ${yearsSinceBirth} years old.</h2>`);
       </script>
     </code>
-    <hr />
   </body>
 </html>

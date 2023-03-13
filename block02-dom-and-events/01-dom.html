@@ -15,17 +15,40 @@
     </style>
   </head>
   <body>
+    <h1>Orange</h1>
+    <h1>Blue</h1>
+    <h1>Purple</h1>
+
     <h1 id="title">Hello</h1>
     <p id="subtitle">How are you?</p>
     <ul>
       <li><a href="#">Link 1</a></li>
       <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
       <li>No link</li>
     </ul>
     <hr />
     <code>
       <script>
-        //Code goes here
+        const title = document.getElementById("title");
+        title.innerHTML = 'Bye Bye';
+        title.style.color = "red";
+
+        const subtitle = document.getElementById("subtitle");
+        subtitle.style.backgroundColor = 'green';
+
+        const listItems = document.querySelectorAll("ul li");
+        for(listItem of listItems) {
+          document.write(listItem.innerText + "</br>")
+        }
+
+        const lastItem = document.querySelector("ul li:last-child");
+        lastItem.remove();
+
+        const headlines = document.querySelectorAll("h1");
+        headlines[0].style.color = "orange";
+        headlines[1].style.color = "blue";
+        headlines[2].style.color = "purple";
       </script>
     </code>
   </body>
