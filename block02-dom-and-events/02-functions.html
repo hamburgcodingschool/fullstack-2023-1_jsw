@@ -16,38 +16,46 @@
 </head>
 <body>
     <script>
-
-        // Named function
         function test1() {
-            console.log("Hello I am a function!");
+          console.log("Hello I am a function!");
         }
 
-        //Named function with arguments
         function test2(arg) {
-            console.log(`Hello I am a function with argument: ${arg}`);
+          console.log(`Hello I am a function with the arguments: ${arg}`);
         }
 
-        //Named function with arguments
-        function test3(arg1, arg2) {
-            console.log(`Hello I am a function with two arguments: ${arg1} and ${arg2}`);
+        function test3(arg, arg2) {
+          console.log(`Hello I am a function with the arguments: ${arg} and ${arg2}`);
         }
 
-        //Named function with as many arguments as you want
         function test4(...args) {
-            console.log(`Hello I am a function with these arguments: ` +  args.join(","));
+          console.log(args);
         }
 
-        // Anonymous function
-        const test5 = function () {
-            console.log("Hello I am an anonymous function!");
+        function test5(arg1, arg2 = "test") {
+          console.log(`Hello I am a function with the arguments: ${arg1} and ${arg2}`);
         }
 
-        console.log( test1() );
-        console.log( test2("something") );
-        console.log( test3("something1", "something2") );
-        console.log( test4("what", "ever", "you", "want") );
-        console.log( test5() );
+        const test6 = function () {
+          console.log("Hello! I am a anonymous function!");
+        }
 
+        const test7 = function () {
+          console.log("Hello! I am a anonymous function that is an argument!");
+        }
+
+        function myEvent(anotherFunc) {
+          console.log("myEvent is called!")
+          anotherFunc();
+        }
+
+        test1();
+        test2("something");
+        test3("something", "something1");
+        test4("something1", "something2", "something3", "something4");
+        test5("something", "something3");
+        test6();
+        myEvent(test7);
     </script>
 </body>
 </html>

@@ -22,20 +22,5 @@
   <script type="text/javascript">
     // 1. ask user for todo with prompt()
     // 2. print a list of todos to the page
-
-    function clickHandler(event) {
-      console.log(event);
-      let list = document.getElementById("todos");
-      let todo = prompt("What ToDo do you have?");
-      console.log(todo);
-      let listItem = document.createElement("li");
-      // Do your thing here:
-      //listItem.style.backgroundColor = "#777";
-      let itemText = document.createTextNode(todo);
-      listItem.appendChild(itemText);
-      list.appendChild(listItem);
-    }
-    let button = document.getElementById("add-todo");
-    button.addEventListener("click", clickHandler);
   </script>
 </html>
