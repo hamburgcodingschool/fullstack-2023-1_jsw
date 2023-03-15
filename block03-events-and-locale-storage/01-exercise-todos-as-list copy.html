@@ -18,9 +18,21 @@
     <h1>Todo List</h1>
     <button id="add-todo">Add Todo</button>
     <ul id="todos"></ul>
+    <script type="text/javascript">
+      let todos = [];
+      let button = document.getElementById("add-todo");
+  
+      button.addEventListener("click", function() {
+        let todo = prompt("What ToDo do you have?");
+        todos.push(todo);
+
+        let listHtml = "";
+        for(todo of todos) {
+          listHtml += `<li>${todo}</li>`;
+        }
+        let list = document.getElementById("todos");
+        list.innerHTML = listHtml;
+      });
+    </script>
   </body>
-  <script type="text/javascript">
-    // when the button is clicked, ask the user for a todo
-    // display all todos in the list
-  </script>
 </html>

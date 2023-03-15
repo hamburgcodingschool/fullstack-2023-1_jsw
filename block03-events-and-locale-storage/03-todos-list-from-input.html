@@ -21,7 +21,19 @@
     <button id="add-todo">Add Todo</button>
   </body>
   <script type="text/javascript">
-    // the user enters a todo into the input
-    // when the button is clicked add the todo to the list
+    const todoList = document.getElementById("todos");
+    const inputText = document.getElementById("todo-text");
+    const addTodoButton = document.getElementById("add-todo");
+
+    addTodoButton.addEventListener("click", () => {
+      const newTodo = inputText.value;
+
+      if(newTodo == "") {
+        return;
+      }
+      
+      todoList.innerHTML = todoList.innerHTML + `<li>${newTodo}</li>`;
+      inputText.value = "";
+    })
   </script>
 </html>
