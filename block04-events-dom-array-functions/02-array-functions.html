@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const arrayOfWords = [
+        "JavaScript",
+        "is",
+        "a",
+        "programming",
+        "language",
+        "that",
+        "is",
+        "widely",
+        "used",
+        "for",
+        "web",
+        "development",
+      ];
+
+      console.log("arrayOfWords", arrayOfWords)
+      console.log("arrayOfWords.join", arrayOfWords.join("!"));
+      console.log("arrayOfWords.reverse",arrayOfWords.reverse());
+      console.log("arrayOfWords.map", arrayOfWords.map((word) => word.length));
+      console.log("arrayOfWords.reduce", arrayOfWords.reduce((acc, word) => acc + word.length, 0))
+      console.log("arrayOfWords.filter", arrayOfWords.filter((word) => word.includes("a")));
+    </script>
+  </body>
+</html>

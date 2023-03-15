@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello you!</h1>
+    <input id="headline-text" placeholder="Your headline here!"/>
+    <script type="text/javascript">
+      let inputHeadline = document.querySelector('#headline-text');
+      let headline = document.querySelector("h1");
+      let firstHeadline = headline.innerHTML;
+
+      inputHeadline.addEventListener("input", () => {
+        let newHeadline = inputHeadline.value;
+        let headline = document.querySelector("h1");
+
+        if(newHeadline === "") {
+          headline.innerHTML = firstHeadline;
+        } else {
+          headline.innerHTML = newHeadline;
+        }
+      })
+    </script>
+  </body>
+</html>
