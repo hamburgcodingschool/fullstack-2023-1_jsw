@@ -87,27 +87,7 @@
           "year": 1991
         }
       ]
-      const updateTable = (elements) => {
-        const tableBody = document.querySelector('#table-body');
-        const tableRows = elements.map((element) => {
-          return `<tr>
-            <td>${element.name}</td>
-            <td>${element.movie}</td>
-            <td>${element.year}</td>
-          </tr>`
-        })
-        tableBody.innerHTML = tableRows.join("");
-      }
-      updateTable(characters);
-
-      const filterInput = document.querySelector('#filter-input');
-      filterInput.addEventListener('input', (event) => {
-        const filterValue = filterInput.value.toLowerCase();
-        const filteredCharacters = characters.filter((character) => {
-          return character.name.toLowerCase().includes(filterValue) || character.movie.toLowerCase().includes(filterValue);
-        })
-        updateTable(filteredCharacters);
-      })
+      // code goes here
     </script>
   </body>
 </html>
