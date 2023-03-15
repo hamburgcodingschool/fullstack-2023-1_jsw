@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+      ul.tags {
+        list-style: none;
+        padding: 0;
+      }
+      ul.tags li {
+        display: inline-block;
+        border-radius: 15px;
+        background-color: gray;
+        color: white;
+        padding: 5px 10px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="tag-input" placeholder="Tag, tag, tag..."/>
+    <ul class="tags"></ul>
+    <script type="text/javascript">
+      let inputTags = document.querySelector('#tag-input');
+      let tagList = document.querySelector('.tags');
+
+      inputTags.addEventListener("input", () => {
+        let tags = inputTags.value.split(",").map((tag) => tag.trim()).filter((tag) => tag != "")
+        
+        const tagsHtml = tags.map((tag) => (`<li>${tag}</li>`))
+        tagList.innerHTML = tagsHtml.join("");
+      })
+    </script>
+  </body>
+</html>
