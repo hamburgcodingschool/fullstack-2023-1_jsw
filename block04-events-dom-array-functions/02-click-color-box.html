@@ -25,32 +25,10 @@
     <button id="buttonChangeColor">Change Color</button>
 
     <script>
-        const colorBox = document.getElementById("colorBox");
-        const buttonChangeColor = document.getElementById("buttonChangeColor");
-        
-        let counter = 0;
-        const colors = ["red", "green", "blue", "yellow", "pink"];
-
-        function changeColor() {
-            counter++;
-
-            if (counter >= colors.length) {
-                counter = 0;
-            }
-
-            // colorBox.innerHTML = counter;
-            colorBox.style.backgroundColor = colors[counter];
-           
-        }
-
-        colorBox.addEventListener("click", changeColor);
-        buttonChangeColor.addEventListener("click", changeColor);
-        
-
-        // EXERCISE
-        // Click the button to change the backgroundColor of the box
-        // between Red, Green and Blue
-        // R -> G -> B -> R -> ...
+      // EXERCISE
+      // Click the button to change the backgroundColor of the box
+      // between Red, Green and Blue
+      // R -> G -> B -> R -> ...
     </script>
 </body>
 </html>
