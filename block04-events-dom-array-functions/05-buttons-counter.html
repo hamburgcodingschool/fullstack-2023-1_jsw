@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+</head>
+<body>
+    <div id="counter"></div>
+    <button id="up">+</button>
+    <button id="down">-</button>
+
+    <script>
+      let counterLabel = document.getElementById("counter");
+      let buttonUp = document.getElementById("up");
+      let buttonDown = document.getElementById("down");
+
+      let counter = 0;
+
+      const refreshLabel = () => {
+        counterLabel.innerHTML = counter;
+      }
+      refreshLabel();
+
+      buttonUp.addEventListener('click', () => {
+        counter++;
+        refreshLabel();
+      })
+
+      buttonDown.addEventListener('click', () => {
+        counter--;
+        refreshLabel();
+      })
+
+    </script>
+</body>
+</html>
