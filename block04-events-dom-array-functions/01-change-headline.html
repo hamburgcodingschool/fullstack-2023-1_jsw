@@ -17,10 +17,21 @@
   <body>
     <h1>Hello you!</h1>
     <input id="headline-text" placeholder="Your headline here!"/>
+    <select id="selectBox">
+      <option>white</option>
+      <option>red</option>
+      <option>green</option>
+      <option>blue</option>
+      <option>yellow</option>
+      <option>pink</option>
+      <option>bisque</option>
+      <option>#F134DD</option>
+    </select>
     <script type="text/javascript">
       let inputHeadline = document.querySelector('#headline-text');
       let headline = document.querySelector("h1");
       let firstHeadline = headline.innerHTML;
+      const selectBox = document.querySelector("#selectBox");
 
       inputHeadline.addEventListener("input", () => {
         let newHeadline = inputHeadline.value;
@@ -32,6 +43,11 @@
           headline.innerHTML = newHeadline;
         }
       })
+        
+      selectBox.addEventListener("change", function(event) {
+          const colorName = event.target.value;
+          headline.style.color = colorName;
+      });
     </script>
   </body>
 </html>
