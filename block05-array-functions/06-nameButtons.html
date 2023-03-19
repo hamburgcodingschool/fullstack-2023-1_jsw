@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boxDiv {
+            min-height: 20px;
+            border: solid 2px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxDiv"></div>
+    <button>A</button>
+    <button>B</button>
+    <button>C</button>
+    <button>D</button>
+    <button>E</button>
+    <button>F</button>
+    <button>G</button>
+    
+    <script>
+        const buttons = document.querySelectorAll("button");
+        const boxDiv = document.querySelector("#boxDiv");
+        
+        function handleButton(event) {
+            const letter = event.target.innerHTML;
+            boxDiv.innerHTML = letter;
+        }
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", handleButton);
+        }
+    </script>
+</body>
+</html>

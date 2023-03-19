@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boxDiv {
+            width: 100px;
+            height: 100px;
+            border: solid 2px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxDiv"></div>
+    <select id="selectBox">
+        <option>white</option>
+        <option>red</option>
+        <option>green</option>
+        <option>blue</option>
+        <option>yellow</option>
+        <option>pink</option>
+        <option>bisque</option>
+        <option>#F134DD</option>
+    </select>
+    
+    <script>
+        const boxDiv = document.querySelector("#boxDiv");
+        const selectBox = document.querySelector("#selectBox");
+        
+        selectBox.addEventListener("change", function(event) {
+            const colorName = event.target.value;
+            // const colorName = selectBox.value;
+
+            boxDiv.innerHTML = colorName;
+            boxDiv.style.backgroundColor = colorName;
+        });
+
+    </script>
+</body>
+</html>
