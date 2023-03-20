@@ -31,12 +31,28 @@
         "development",
       ];
 
-      console.log("arrayOfWords", arrayOfWords)
-      console.log("arrayOfWords.join", arrayOfWords.join("!"));
-      console.log("arrayOfWords.reverse",arrayOfWords.reverse());
-      console.log("arrayOfWords.map", arrayOfWords.map((word) => word.length));
-      console.log("arrayOfWords.reduce", arrayOfWords.reduce((acc, word) => acc + word.length, 0))
-      console.log("arrayOfWords.filter", arrayOfWords.filter((word) => word.includes("a")));
+      // console.log(arrayOfWords);
+
+      // let sentence = "";
+      // for(word of arrayOfWords) {
+      //   sentence = sentence + " " + word;
+      // }
+      // console.log(sentence);
+      const sentence = arrayOfWords.join(",");
+      console.log(sentence);
+      console.log(sentence.split(","));
+      // console.log(arrayOfWords.reverse());
+
+      console.log(arrayOfWords.map((word) => word.length))
+      console.log(arrayOfWords.filter((word) => word.includes("a")))
+
+      let last = 0;
+      for(word of arrayOfWords) {
+        last = last + word.length
+      }
+      console.log("last", last);
+
+      console.log(arrayOfWords.reduce((last, word) => last + word.length, 0))
     </script>
   </body>
 </html>

@@ -57,7 +57,8 @@
           <th>Year</th>
         </tr>
       </thead>
-      <tbody id="table-body"></tbody>
+      <tbody id="table-body">
+      </tbody>
     </table>
     <script type="text/javascript">
       const characters = [
@@ -87,7 +88,28 @@
           "year": 1991
         }
       ]
-      // code goes here
+      let tableBody = document.getElementById("table-body");
+      const rows = characters.map((character) => `<tr>
+        <td>${character.name}</td>
+        <td>${character.movie}</td>
+        <td>${character.year}</td>
+      </tr>`)
+      const tableHtml = rows.join("");
+      tableBody.innerHTML = tableHtml;
+
+      let filterInput = document.querySelector("#filter-input");
+      filterInput.addEventListener("input", () => {
+        const filterValue = filterInput.value.toLowerCase();
+        const filteredCharacters = characters.filter((character) => character.name.toLowerCase().includes(filterValue))
+        
+        const filteredRows = filteredCharacters.map((character) => `<tr>
+          <td>${character.name}</td>
+          <td>${character.movie}</td>
+          <td>${character.year}</td>
+        </tr>`)
+
+        tableBody.innerHTML = filteredRows.join("");
+      })
     </script>
   </body>
 </html>

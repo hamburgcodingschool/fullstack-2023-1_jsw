@@ -30,7 +30,18 @@
     <input id="tag-input" placeholder="Tag, tag, tag..."/>
     <ul class="tags"></ul>
     <script type="text/javascript">
-      // code goes here
+      let inputTags = document.querySelector('#tag-input');
+      let tagList = document.querySelector(".tags");
+
+      inputTags.addEventListener('input', () => {
+        let tags = inputTags.value.split(",");
+        tags = tags.filter((tag) => (tag.trim() != ""))
+
+        let tagsLis = tags.map(tag => `<li>${tag}</li>`);
+        let tagsHtml = tagsLis.join("");
+
+        tagList.innerHTML = tagsHtml;
+      })
     </script>
   </body>
 </html>
