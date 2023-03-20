@@ -91,17 +91,21 @@
           "category": "Grandpa"
         }
       ]
+
+      const grandMaFilter = gran => gran.category == 'Grandma'
+      const grandPaFilter = gran => gran.category == 'Grandpa'
+    
       
       const grandmaRow = `<tr>
         <td>Grandma</td>
-        <td>${grannies.filter(gran => gran.category == 'Grandma').map(gran => gran.name).join(",")}</td>
-        <td>${grannies.filter(gran => gran.category == 'Grandma').reduce((last, gran) => last + gran.age, 0)}</td>
+        <td>${grannies.filter(grandMaFilter).map(gran => gran.name).join(",")}</td>
+        <td>${grannies.filter(grandMaFilter).reduce((last, gran) => last + gran.age, 0)}</td>
       </tr>`
 
       const grandpaRow = `<tr>
         <td>Grandpa</td>
-        <td>${grannies.filter(gran => gran.category == 'Grandpa').map(gran => gran.name).join(",")}</td>
-        <td>${grannies.filter(gran => gran.category == 'Grandpa').reduce((last, gran) => last + gran.age, 0)}</td>
+        <td>${grannies.filter(grandPaFilter).map(gran => gran.name).join(",")}</td>
+        <td>${grannies.filter(grandPaFilter).reduce((last, gran) => last + gran.age, 0)}</td>
       </tr>`
 
       const tableBody = document.querySelector('#table-body');
