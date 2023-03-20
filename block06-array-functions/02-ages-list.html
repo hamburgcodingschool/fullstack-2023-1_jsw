@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-family: Arial, sans-serif;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #4c7caf;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Ma/Pa</th>
+          <th>Names</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <script type="text/javascript">
+      const grannies = [
+        {
+          "name": "Joe",
+          "age": 67,
+          "category": "Grandpa"
+        },
+        {
+          "name": "Jackie",
+          "age": 83,
+          "category": "Grandma"
+        },
+        {
+          "name": "Wanda",
+          "age": 72,
+          "category": "Grandma"
+        },
+        {
+          "name": "Pete",
+          "age": 65,
+          "category": "Grandpa"
+        },
+        {
+          "name": "Mary",
+          "age": 88,
+          "category": "Grandma"
+        },
+        {
+          "name": "Max",
+          "age": 73,
+          "category": "Grandpa"
+        }
+      ]
+      
+      const grandmaRow = `<tr>
+        <td>Grandma</td>
+        <td>${grannies.filter(gran => gran.category == 'Grandma').map(gran => gran.name).join(",")}</td>
+        <td>${grannies.filter(gran => gran.category == 'Grandma').reduce((last, gran) => last + gran.age, 0)}</td>
+      </tr>`
+
+      const grandpaRow = `<tr>
+        <td>Grandpa</td>
+        <td>${grannies.filter(gran => gran.category == 'Grandpa').map(gran => gran.name).join(",")}</td>
+        <td>${grannies.filter(gran => gran.category == 'Grandpa').reduce((last, gran) => last + gran.age, 0)}</td>
+      </tr>`
+
+      const tableBody = document.querySelector('#table-body');
+      tableBody.innerHTML = tableBody.innerHTML + grandmaRow
+      tableBody.innerHTML = tableBody.innerHTML + grandpaRow
+    </script>
+  </body>
+</html>

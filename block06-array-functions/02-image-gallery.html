@@ -7,21 +7,18 @@
     <title>Document</title>
     <style>
         #galleryWrapper {
-            border: solid 2px blue;
             width: 500px;
             min-height: 100px;
             margin: 20px auto 0;
 
             display: flex;
             align-items: center;
-            /* flex-direction: row; */
         }
 
         #imgBox {
             width: 380px;
             height: 380px;
             object-fit: contain;
-            background-color: pink;
         }
 
         #galleryWrapper > button {
@@ -39,7 +36,7 @@
 
     <script>
         function updateImage() {
-            imgBox.src = "./images/" + images[counter];
+            imgBox.src = images[counter];
         }
 
         const buttonPrev = document.getElementById("buttonPrev");
@@ -47,9 +44,9 @@
         const imgBox = document.getElementById("imgBox");
 
         const images = [
-            "homer1.jpg",
-            "homer2.webp",
-            "homer3.jpg"
+            "images/homer1.jpg",
+            "images/homer2.jpg",
+            "images/homer3.jpg"
         ];
         let counter = 0;
         updateImage();
