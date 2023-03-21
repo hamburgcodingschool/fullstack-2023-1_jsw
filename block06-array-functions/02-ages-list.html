@@ -89,11 +89,27 @@
           "name": "Max",
           "age": 73,
           "category": "Grandpa"
-        }
+        },
+        {
+          "name": "Mia",
+          "age": 5,
+          "category": "Granddaughter"
+        },
+        {
+          "name": "Son",
+          "age": 7,
+          "category": "Grandson"
+        },
+        {
+          "name": "Valerie",
+          "age": 3,
+          "category": "Granddaughter"
+        },
       ]
 
       const grandMaFilter = gran => gran.category == 'Grandma'
       const grandPaFilter = gran => gran.category == 'Grandpa'
+      const grandKidFilter = gran => (gran.category == 'Grandson' || gran.category == 'Granddaughter')
     
       
       const grandmaRow = `<tr>
@@ -108,9 +124,16 @@
         <td>${grannies.filter(grandPaFilter).reduce((last, gran) => last + gran.age, 0)}</td>
       </tr>`
 
+      const grandkidsRow = `<tr>
+        <td>Grandkids</td>
+        <td>${grannies.filter(grandKidFilter).map(gran => gran.name).join(",")}</td>
+        <td>${grannies.filter(grandKidFilter).reduce((last, gran) => last + gran.age, 0)}</td>
+      </tr>`
+
       const tableBody = document.querySelector('#table-body');
       tableBody.innerHTML = tableBody.innerHTML + grandmaRow
       tableBody.innerHTML = tableBody.innerHTML + grandpaRow
+      tableBody.innerHTML = tableBody.innerHTML + grandkidsRow
     </script>
   </body>
 </html>
