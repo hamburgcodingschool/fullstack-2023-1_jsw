@@ -56,7 +56,13 @@
           <th>Age</th>
         </tr>
       </thead>
-      <tbody id="table-body"></tbody>
+      <tbody id="table-body">
+        <tr>
+          <td>Grandma</td>
+          <td>Name, Name, Name</td>
+          <td>123 (total age)</td>
+        </tr>
+      </tbody>
     </table>
     <script type="text/javascript">
       const grannies = [
@@ -107,33 +113,8 @@
         },
       ]
 
-      const grandMaFilter = gran => gran.category == 'Grandma'
-      const grandPaFilter = gran => gran.category == 'Grandpa'
-      const grandKidFilter = gran => (gran.category == 'Grandson' || gran.category == 'Granddaughter')
-    
-      
-      const grandmaRow = `<tr>
-        <td>Grandma</td>
-        <td>${grannies.filter(grandMaFilter).map(gran => gran.name).join(",")}</td>
-        <td>${grannies.filter(grandMaFilter).reduce((last, gran) => last + gran.age, 0)}</td>
-      </tr>`
-
-      const grandpaRow = `<tr>
-        <td>Grandpa</td>
-        <td>${grannies.filter(grandPaFilter).map(gran => gran.name).join(",")}</td>
-        <td>${grannies.filter(grandPaFilter).reduce((last, gran) => last + gran.age, 0)}</td>
-      </tr>`
-
-      const grandkidsRow = `<tr>
-        <td>Grandkids</td>
-        <td>${grannies.filter(grandKidFilter).map(gran => gran.name).join(",")}</td>
-        <td>${grannies.filter(grandKidFilter).reduce((last, gran) => last + gran.age, 0)}</td>
-      </tr>`
-
-      const tableBody = document.querySelector('#table-body');
-      tableBody.innerHTML = tableBody.innerHTML + grandmaRow
-      tableBody.innerHTML = tableBody.innerHTML + grandpaRow
-      tableBody.innerHTML = tableBody.innerHTML + grandkidsRow
+      // add a row for grandmas, grandpas and a combined row for the grandchildren
+      // each row should have the category, the names of the people in that category, and the total age of the people in that category
     </script>
   </body>
 </html>

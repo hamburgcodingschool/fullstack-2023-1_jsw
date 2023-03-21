@@ -40,40 +40,14 @@
         { name: 'Boots', price: 99.99, category: 'Shoes' },
       ];
 
-      // Format all Products in the way "name - Price (€ xx)""
-      const formattedProducts = products.map(product => `${product.name} - €${product.price.toFixed(2)}`);
-      
+      // Format all Products in the way "name - Price (€ xx)"
       // print a list of just the Accessories
-      const accessories = products.filter(product => product.category === 'Accessories');
-
       // Print the total Price of all products
-      const totalPrice = products.reduce((accumulator, product) => accumulator + product.price, 0);
 
-      const formattedProductsList = document.getElementById("formattedProductsList");
-      const accessoriesList = document.getElementById("accessoriesList");
-      const totalPriceElement = document.getElementById("totalPrice");
-
-      formattedProducts.forEach((product) => {
-        const li = document.createElement("li");
-        li.innerText = product;
-        formattedProductsList.appendChild(li);
-      });
-
-      // Loop through the accessories array and add each item to the accessoriesList element
-      accessories.forEach((product) => {
-        const li = document.createElement("li");
-        li.innerText = `${product.name} - $${product.price.toFixed(2)}`;
-        accessoriesList.appendChild(li);
-      });
-
-      // Set the totalPriceElement text content to the total price
-      totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-
+      // Bonus:
       // Use the sort() function to sort the products in the original array by price, from lowest to highest.
       // Use the every() function to check if all the products in the original array have a price greater than 0.
       // Use the some() function to check if there is at least one product in the original array that costs more than $50.
-
     </script>
-
   </body>
 </html>
