@@ -112,9 +112,37 @@
           "category": "Granddaughter"
         },
       ]
-
       // add a row for grandmas, grandpas and a combined row for the grandchildren
       // each row should have the category, the names of the people in that category, and the total age of the people in that category
+
+      const grandPas = grannies.filter(gran => gran.category.includes('Grandpa'))
+      const grandMas = grannies.filter(gran => gran.category.includes('Grandma'))
+      const grandKids = grannies.filter(gran => ['Granddaughter', 'Grandson'].includes(gran.category))
+
+      const ageReducer = (combinedAgeSoFar, person) => (combinedAgeSoFar + person.age);
+
+      const grandPaRow = `<tr>
+        <td>Grandpas</td>
+        <td>${grandPas.map(person => person.name).join(",")}</td>
+        <td>${grandPas.reduce(ageReducer, 0)}</td>
+      </tr>`;
+
+      const grandMaRow = `<tr>
+        <td>Grandmas</td>
+        <td>${grandMas.map(person => person.name).join(",")}</td>
+        <td>${grandMas.reduce(ageReducer, 0)}</td>
+      </tr>`;
+
+      const grandKidsRow = `<tr>
+        <td>GrandKids</td>
+        <td>${grandKids.map(person => person.name).join(",")}</td>
+        <td>${grandKids.reduce(ageReducer, 0)}</td>
+      </tr>`;
+
+      const tableBody = document.getElementById('table-body');
+      tableBody.innerHTML = grandPaRow + grandMaRow + grandKidsRow;
+
+
     </script>
   </body>
 </html>
