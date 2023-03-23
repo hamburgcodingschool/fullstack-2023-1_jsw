@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Star Wars</h1>
+    <h2>Characters</h2>
+    <ul id="character-list"></ul>
+    
+    <script type="text/javascript">
+      const characterList = document.getElementById('character-list');
+
+      fetch('https://swapi.dev/api/people')
+        .then(response => response.json())
+        .then(data => {
+          const characters = data.results;
+          const promises = characters.map(character => {
+            if (character.starships.length === 0) {
+              return Promise.resolve(character);
+            } else {
+              return fetch(character.starships[0])
+                .then(response => response.json())
+                .then(data => {
+                  character.shipName = data.name;
+                  return character;
+                });
+            }
+          });
+          return Promise.all(promises);
+        })
+        .then(characters => {
+          characters.forEach(character => {
+            const li = document.createElement('li');
+            const name = document.createElement('h2');
+            const ship = document.createElement('p');
+            name.textContent = character.name;
+            if (character.shipName) {
+              ship.textContent = `Ship: ${character.shipName}`;
+            } else {
+              ship.textContent = "This character hasn't piloted any ships.";
+            }
+            li.appendChild(name);
+            li.appendChild(ship);
+            characterList.appendChild(li);
+          });
+        })
+        .catch(error => console.error(error));
+
+    </script>
+
+  </body>
+</html>
