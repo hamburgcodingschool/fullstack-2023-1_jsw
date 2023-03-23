@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const orders = [
+        {
+          type: "Pizza Magnifico",
+          cookingTime: 3000,
+          toppings: ["cheese", "tomato", "ham", "mushrooms"],
+        },
+        {
+          type: "Pizza Margherita",
+          cookingTime: 2000,
+          toppings: ["cheese", "tomato"],
+        },
+        {
+          type: "Pizza Quattro Stagioni",
+          cookingTime: 4000,
+          toppings: ["cheese", "tomato", "ham", "mushrooms", "olives", "artichokes"],
+        },
+      ]
+
+      function cookPizzas(orders) {
+        const pizzas = orders.map(order => {
+          return new Promise((resolve, reject) => {
+            const pizza = cookPizza(order.type, order.toppings);
+            setTimeout(() => {
+              if (pizza) {
+                console.log(`Pizza ${order.type} done.`)
+                resolve(pizza);
+              } else {
+                reject(`Error: Failed to cook ${order.type} pizza.`);
+              }
+            }, order.cookingTime);
+          });
+        });
+        return Promise.all(pizzas);
+      }
+
+      function cookPizza(type, toppings) {
+        console.log(`Cooking ${type} pizza...`);
+        const pizza = {
+          type,
+          toppings,
+          isCooked: true,
+        };
+        return pizza;
+      }
+
+      cookPizzas(orders)
+        .then(pizzas => {
+          console.log("All pizzas are cooked.");
+          console.log(pizzas);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+    </script>
+
+  </body>
+</html>
