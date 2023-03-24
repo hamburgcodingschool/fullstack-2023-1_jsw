@@ -17,55 +17,59 @@
   </head>
   <body>
     <script type="text/javascript">
+
+      console.log("before giveMeANumber");
+      const giveMeANumber = () => {
+        return 3;
+      }
+      console.log(giveMeANumber());
+      console.log("after giveMeANumber");
+
+
       // Understanding Promises
       // Before we start using Promises, it's important to understand what they are and how they work. A Promise is an object that represents a value that may not be available yet, but will be at some point in the future. Promises are commonly used in JavaScript to handle asynchronous operations, such as loading data from an API or reading a file from disk.
 
       // A Promise has three states:
-
       // pending: The initial state. The Promise is neither fulfilled nor rejected.
       // fulfilled: The Promise has been fulfilled, meaning that the desired value is available.
       // rejected: The Promise has been rejected, meaning that an error occurred.
-      // Step 2: Creating a Promise
-      // To create a Promise, you use the new Promise() constructor. The constructor takes a single argument, which is a function that accepts two parameters: resolve and reject. The resolve function is called when the Promise is fulfilled, and the reject function is called when the Promise is rejected.
 
       // const myPromise = new Promise((resolve, reject) => {
-      //   // Do some asynchronous operation here
-      //   // If the operation is successful, call resolve with the desired value
-      //   // If the operation fails, call reject with an error
-      // });
-      
-      // myPromise
-      // .then((value) => {
-      //   // Handle the fulfilled Promise here
+      //   // stuff that takes time
       // })
-      // .catch((error) => {
-      //   // Handle the rejected Promise here
-      // });
 
+      // myPromise.then((value) => { null }).catch((error) => { null });
+
+      console.log("--------------------");
 
       function fetchData() {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            if (Math.random() > 0.5) {
-              reject(new Error("Something went wrong"));
+            const number = Math.random();
+            console.log(number);
+            if(number > 0.5) {
+              resolve({ name: "John Doe", age: 30});
             } else {
-              resolve({ name: "John Doe", age: 30 });
+              reject("Something went wrong");
             }
           }, 2000);
         });
       }
 
-      console.log("Before fetchData()");
+      console.log("before fetchData");
       fetchData()
-        .then((data) => {
+        .then((person) => {
           console.log('then');
-          console.log('data', data);
+          console.log(person);
         })
         .catch((error) => {
-          console.log('catch');
-          console.error('error',error);
-        });
-      console.log("After fetchData()");
+          console.log("catch");
+          console.log(error)
+        })
+      console.log("after fetchData");
+
+
+
     </script>
 
   </body>
