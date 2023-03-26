@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-family: Arial, sans-serif;
+      }
+      #character-list li {
+        cursor: pointer;
+      }
+      #character-sheet {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        padding: 20px;
+      }
+
+      #character-sheet h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      #character-sheet p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Star Wars</h1>
+    <h2>Characters</h2>
+    <ul id="character-list"></ul>
+    <div id="character-sheet"></div>
+  
+    <script type="text/javascript">
+      const characterList = document.getElementById('character-list');
+      const characterSheet = document.getElementById('character-sheet');
+  
+      fetch('https://swapi.dev/api/people')
+        .then(response => response.json())
+        .then(data => {
+          characterList.innerHTML = data.results.map(character => `<li>${character.name}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+  
+      characterList.addEventListener('click', event => {
+        const characterName = event.target.textContent;
+        fetch(`https://swapi.dev/api/people/?search=${characterName}`)
+          .then(response => response.json())
+          .then(data => {
+            const character = data.results[0];
+            characterSheet.innerHTML = `
+              <h2>${character.name}</h2>
+              <p>Height: ${character.height}</p>
+              <p>Mass: ${character.mass}</p>
+              <p>Hair color: ${character.hair_color}</p>
+              <p>Skin color: ${character.skin_color}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      });
+    </script>
+  </body>
+  
+</html>

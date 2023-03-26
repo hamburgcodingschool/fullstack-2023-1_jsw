@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript for Web</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 15px auto;
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-family: Arial, sans-serif;
+      }
+      ul li {
+        cursor: pointer;
+      }
+
+      .sheet {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+        padding: 20px;
+      }
+
+      .sheet h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .sheet p {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Star Wars</h1>
+    <h2>Characters</h2>
+    <ul id="character-list"></ul>
+    <div class="sheet" id="character-sheet"></div>
+    <h2>Starships</h2>
+    <ul id="starship-list"></ul>
+    <div class="sheet" id="starship-sheet"></div>
+    <h2>Planets</h2>
+    <ul id="planet-list"></ul>
+    <div class="sheet" id="planet-sheet"></div>
+    <h2>Films</h2>
+    <ul id="film-list"></ul>
+    <div class="sheet" id="film-sheet"></div>
+    
+    <script type="text/javascript">
+      const characterList = document.getElementById('character-list');
+
+      fetch('https://swapi.dev/api/people')
+        .then(response => response.json())
+        .then(data => {
+          characterList.innerHTML = data.results.map(character => `<li>${character.name}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
+      // Starships with Name, Model and Passangers
+      const starshipList = document.getElementById('starship-list');
+
+      fetch('https://swapi.dev/api/starships/')
+        .then(response => response.json())
+        .then(data => {
+          starshipList.innerHTML = data.results.map(starship => `<li data-url="${starship.url}">${starship.name} (${starship.model}), passengers: ${starship.passengers}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
+
+      // Planets with Name, Population and Terrain
+      const planetList = document.getElementById('planet-list');
+
+      fetch('https://swapi.dev/api/planets/')
+        .then(response => response.json())
+        .then(data => {
+          planetList.innerHTML = data.results.map(planet => `<li data-url="${planet.url}">${planet.name}, population: ${planet.population}, terrain: ${planet.terrain}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
+      // Films with Title and Release Date
+      const filmList = document.getElementById('film-list');
+
+      fetch('https://swapi.dev/api/films/')
+        .then(response => response.json())
+        .then(data => {
+          filmList.innerHTML = data.results.map(film => `<li data-url="${film.url}">${film.title}, released on: ${film.release_date}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
+      const characterSheet = document.getElementById('character-sheet');
+      characterList.addEventListener('click', event => {
+        const characterName = event.target.textContent;
+        fetch(`https://swapi.dev/api/people/?search=${characterName}`)
+          .then(response => response.json())
+          .then(data => {
+            const character = data.results[0];
+            characterSheet.innerHTML = `
+              <h2>${character.name}</h2>
+              <p>Height: ${character.height}</p>
+              <p>Mass: ${character.mass}</p>
+              <p>Hair color: ${character.hair_color}</p>
+              <p>Skin color: ${character.skin_color}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      });
+
+      const starshipSheet = document.getElementById('starship-sheet');
+      starshipList.addEventListener('click', event => {
+        const starshipUrl = event.target.dataset.url;
+
+        fetch(starshipUrl)
+          .then(response => response.json())
+          .then(data => {
+            const starship = data;
+            starshipSheet.innerHTML = `
+              <h2>${starship.name}</h2>
+              <p>Model: ${starship.model}</p>
+              <p>Manufacturer: ${starship.manufacturer}</p>
+              <p>Cost in credits: ${starship.cost_in_credits}</p>
+              <p>Length: ${starship.length}</p>
+              <p>Max atmosphering speed: ${starship.max_atmosphering_speed}</p>
+              <p>Crew: ${starship.crew}</p>
+              <p>Passengers: ${starship.passengers}</p>
+              <p>Cargo capacity: ${starship.cargo_capacity}</p>
+              <p>Consumables: ${starship.consumables}</p>
+              <p>Hyperdrive rating: ${starship.hyperdrive_rating}</p>
+              <p>MGLT: ${starship.MGLT}</p>
+              <p>Starship class: ${starship.starship_class}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      });
+
+      const planetSheet = document.getElementById('planet-sheet');
+      planetList.addEventListener('click', event => {
+        const planetUrl = event.target.dataset.url;
+
+        fetch(planetUrl)
+          .then(response => response.json())
+          .then(data => {
+            const planet = data;
+            planetSheet.innerHTML = `
+              <h2>${planet.name}</h2>
+              <p>Rotation period: ${planet.rotation_period}</p>
+              <p>Orbital period: ${planet.orbital_period}</p>
+              <p>Diameter: ${planet.diameter}</p>
+              <p>Climate: ${planet.climate}</p>
+              <p>Gravity: ${planet.gravity}</p>
+              <p>Terrain: ${planet.terrain}</p>
+              <p>Surface water: ${planet.surface_water}</p>
+              <p>Population: ${planet.population}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      });
+
+      const filmSheet = document.getElementById('film-sheet');
+      filmList.addEventListener('click', event => {
+        const filmUrl = event.target.dataset.url;
+
+        fetch(filmUrl)
+          .then(response => response.json())
+          .then(data => {
+            const film = data;
+            filmSheet.innerHTML = `
+              <h2>${film.title}</h2>
+              <p>Episode ID: ${film.episode_id}</p>
+              <p>Opening crawl: ${film.opening_crawl}</p>
+              <p>Director: ${film.director}</p>
+              <p>Producer: ${film.producer}</p>
+              <p>Release date: ${film.release_date}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      });
+
+    </script>
+
+  </body>
+</html>

@@ -37,8 +37,36 @@
         .catch(error => console.error(error));
 
       // Starships with Name, Model and Passangers
+      const starshipList = document.getElementById('starship-list');
+
+      fetch('https://swapi.dev/api/starships/')
+        .then(response => response.json())
+        .then(data => {
+          starshipList.innerHTML = data.results.map(starship => `<li>${starship.name} (${starship.model}), passengers: ${starship.passengers}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
+
       // Planets with Name, Population and Terrain
+      const planetList = document.getElementById('planet-list');
+
+      fetch('https://swapi.dev/api/planets/')
+        .then(response => response.json())
+        .then(data => {
+          planetList.innerHTML = data.results.map(planet => `<li>${planet.name}, population: ${planet.population}, terrain: ${planet.terrain}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
       // Films with Title and Release Date
+      const filmList = document.getElementById('film-list');
+
+      fetch('https://swapi.dev/api/films/')
+        .then(response => response.json())
+        .then(data => {
+          filmList.innerHTML = data.results.map(film => `<li>${film.title}, released on: ${film.release_date}</li>`).join("");
+        })
+        .catch(error => console.error(error));
+
     </script>
 
   </body>
