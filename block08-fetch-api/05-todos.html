@@ -22,25 +22,6 @@
       // 3. Call each function separately and log the returned data to the console.
       // 4. Now, modify the code to use Promise.all to retrieve both sets of data at once.
 
-      function fetchTodo1() {
-        return fetch('https://jsonplaceholder.typicode.com/todos/1')
-          .then(response => response.json());
-      }
-
-      function fetchTodo2() {
-        return fetch('https://jsonplaceholder.typicode.com/todos/2')
-          .then(response => response.json());
-      }
-
-      fetchTodo1()
-        .then(data => console.log(data));
-
-      fetchTodo2()
-        .then(data => console.log(data));
-
-      Promise.all([fetchTodo1(), fetchTodo2()])
-        .then(data => console.log(data));
-
     </script>
 
   </body>

@@ -99,9 +99,14 @@
 
       let filterInput = document.querySelector("#filter-input");
       filterInput.addEventListener("input", () => {
-        const filterValue = filterInput.value.toLowerCase();
-        const filteredCharacters = characters.filter((character) => character.name.toLowerCase().includes(filterValue))
-        
+        const inputToLowerCase = filterInput.value.toLowerCase();
+
+        const nameFilter = function(character) {
+          const characterFound = character.name.toLowerCase().includes(inputToLowerCase) || character.movie.toLowerCase().includes(inputToLowerCase) || character.year.toString().includes(inputToLowerCase);
+          return characterFound
+        }
+
+        const filteredCharacters = characters.filter(nameFilter)
         const filteredRows = filteredCharacters.map((character) => `<tr>
           <td>${character.name}</td>
           <td>${character.movie}</td>

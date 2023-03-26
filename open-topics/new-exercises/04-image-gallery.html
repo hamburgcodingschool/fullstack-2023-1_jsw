@@ -35,38 +35,13 @@
     </div>
 
     <script>
-        function updateImage() {
-            imgBox.src = images[counter];
-        }
-
-        const buttonPrev = document.getElementById("buttonPrev");
-        const buttonNext = document.getElementById("buttonNext");
-        const imgBox = document.getElementById("imgBox");
-
         const images = [
             "images/homer1.jpg",
             "images/homer2.jpg",
             "images/homer3.jpg"
         ];
-        let counter = 0;
-        updateImage();
 
-        buttonPrev.addEventListener("click", function() {
-            counter--;
-            if (counter < 0) {
-                counter = images.length - 1;
-            }
-            updateImage();
-        });
-
-        buttonNext.addEventListener("click", function() {
-            counter++;
-            if (counter >= images.length) {
-                counter = 0;
-            }
-            updateImage();
-        });
-
+        // make the image gallery work ;-)
     </script>
 </body>
 </html>

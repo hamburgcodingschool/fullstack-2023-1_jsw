@@ -87,26 +87,27 @@
           "year": 1991
         }
       ]
-      const updateTable = (elements) => {
-        const tableBody = document.querySelector('#table-body');
-        const tableRows = elements.map((element) => {
-          return `<tr>
-            <td>${element.name}</td>
-            <td>${element.movie}</td>
-            <td>${element.year}</td>
-          </tr>`
-        })
-        tableBody.innerHTML = tableRows.join("");
-      }
-      updateTable(characters);
+      let tableBody = document.getElementById("table-body");
+      const rows = characters.map((character) => `<tr>
+        <td>${character.name}</td>
+        <td>${character.movie}</td>
+        <td>${character.year}</td>
+      </tr>`)
+      const tableHtml = rows.join("");
+      tableBody.innerHTML = tableHtml;
 
-      const filterInput = document.querySelector('#filter-input');
-      filterInput.addEventListener('input', (event) => {
+      let filterInput = document.querySelector("#filter-input");
+      filterInput.addEventListener("input", () => {
         const filterValue = filterInput.value.toLowerCase();
-        const filteredCharacters = characters.filter((character) => {
-          return character.name.toLowerCase().includes(filterValue) || character.movie.toLowerCase().includes(filterValue);
-        })
-        updateTable(filteredCharacters);
+        const filteredCharacters = characters.filter((character) => character.name.toLowerCase().includes(filterValue))
+        
+        const filteredRows = filteredCharacters.map((character) => `<tr>
+          <td>${character.name}</td>
+          <td>${character.movie}</td>
+          <td>${character.year}</td>
+        </tr>`)
+
+        tableBody.innerHTML = filteredRows.join("");
       })
     </script>
   </body>
