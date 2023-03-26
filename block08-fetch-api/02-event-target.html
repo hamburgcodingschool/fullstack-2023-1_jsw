@@ -51,23 +51,6 @@
           characterList.innerHTML = data.results.map(character => `<li>${character.name}</li>`).join("");
         })
         .catch(error => console.error(error));
-  
-      characterList.addEventListener('click', event => {
-        const characterName = event.target.textContent;
-        fetch(`https://swapi.dev/api/people/?search=${characterName}`)
-          .then(response => response.json())
-          .then(data => {
-            const character = data.results[0];
-            characterSheet.innerHTML = `
-              <h2>${character.name}</h2>
-              <p>Height: ${character.height}</p>
-              <p>Mass: ${character.mass}</p>
-              <p>Hair color: ${character.hair_color}</p>
-              <p>Skin color: ${character.skin_color}</p>
-            `;
-          })
-          .catch(error => console.error(error));
-      });
     </script>
   </body>
   
