@@ -33,33 +33,29 @@
           cookingTime: 4000,
           toppings: ["cheese", "tomato", "ham", "mushrooms", "olives", "artichokes"],
         },
-      ]
+      ];
 
       function cookPizzas(orders) {
-        const pizzas = orders.map(order => {
+        const pizzaPromisses = orders.map(order => {
           return new Promise((resolve, reject) => {
             const pizza = cookPizza(order.type, order.toppings);
             setTimeout(() => {
-              if (pizza) {
-                console.log(`Pizza ${order.type} done.`)
-                resolve(pizza);
-              } else {
-                reject(`Error: Failed to cook ${order.type} pizza.`);
-              }
-            }, order.cookingTime);
-          });
-        });
-        return Promise.all(pizzas);
+              console.log(`Pizza ${order.type} done.`);
+              resolve(pizza);
+            }, order.cookingTime)
+          })
+        })
+        return Promise.all(pizzaPromisses);
       }
 
       function cookPizza(type, toppings) {
-        console.log(`Cooking ${type} pizza...`);
+        console.log(`Cooking ${type} pizza...`)
         const pizza = {
           type,
           toppings,
-          isCooked: true,
+          isCooked: true
         };
-        return pizza;
+        return pizza
       }
 
       cookPizzas(orders)
@@ -67,10 +63,6 @@
           console.log("All pizzas are cooked.");
           console.log(pizzas);
         })
-        .catch(error => {
-          console.log(error);
-        });
-
     </script>
 
   </body>

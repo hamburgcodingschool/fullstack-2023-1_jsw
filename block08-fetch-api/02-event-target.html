@@ -48,9 +48,25 @@
       fetch('https://swapi.dev/api/people')
         .then(response => response.json())
         .then(data => {
-          characterList.innerHTML = data.results.map(character => `<li>${character.name}</li>`).join("");
+          characterList.innerHTML = data.results.map(character => `<li data-url="${character.url}">${character.name}</li>`).join("");
         })
         .catch(error => console.error(error));
+
+      characterList.addEventListener('click', (event) => {
+        const clickedLi = event.target;
+        const characterUrl = clickedLi.dataset.url;
+        
+        fetch(characterUrl)
+          .then(response => response.json())
+          .then(character => {
+            characterSheet.innerHTML = `
+              <h2>${character.name}</h2>
+              <p>Height: ${character.height}</p>
+              <p>Mass: ${character.mass}</p>
+              <p>Hair color: ${character.hair_color}</p>
+            `
+          })
+      })
     </script>
   </body>
   
