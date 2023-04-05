@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">   
+</head>
+<body>
+    <div id="mainContainer">
+        <header>
+            Navigation later
+        </header>
+        <section>
+            
+            <form>
+                <input type="text" placeholder="Image Source" id="imageInput">
+                <br>
+                <input type="text" placeholder="Name" id="nameInput">
+                <br>
+                <input type="text" placeholder="Job" id="jobInput">
+                <br>
+                <button type="button" id="addButton">ADD COOL PERSON</button>
+            </form>
+
+        </section>
+        <div class="cardContainer">
+        </div>
+    </div>
+    <script>
+        const coolPeople = [
+            {
+                imageSrc: "https://images.immediate.co.uk/production/volatile/sites/3/2018/08/Simpsons_SO28_Gallery_11-fb0b632.jpg?quality=90&resize=800,534",
+                name: "Homer",
+                job: "Security Inspector"
+            },
+            {
+                imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpSj7y_EscIXfcjQskmdS18112Tcrva4i353xQ2IhmYw&s",
+                name: "Peter",
+                job: "Formerly a Fisherman"
+            }
+        ];
+
+        const addButton = document.querySelector("#addButton");
+        const nameInput = document.querySelector("#nameInput");
+        const jobInput = document.querySelector("#jobInput");
+        const imageInput = document.querySelector("#imageInput");
+
+        addButton.addEventListener("click", function() {
+            const newPerson = {
+                // imageSrc: "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png",
+                imageSrc: imageInput.value,
+                name: nameInput.value,
+                job: jobInput.value
+            };
+            coolPeople.push(newPerson);
+            fillCardContainer();
+        });
+
+        function fillCardContainer() {
+            const cardContainer = document.querySelector(".cardContainer");
+
+            cardContainer.innerHTML = "";
+            for (let i = 0; i < coolPeople.length; i++) {
+                const newCard = `
+                    <div class="card">
+                        <img src="${coolPeople[i].imageSrc}">
+                        <h2>${coolPeople[i].name}</h2>
+                        <h3>${coolPeople[i].job}</h3>
+                    </div>`;
+                cardContainer.innerHTML += newCard;
+                // console.log(newCard);
+            }
+        }
+
+        fillCardContainer();
+        
+        
+    </script>
+</body>
+</html>

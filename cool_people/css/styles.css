@@ -1,0 +1,38 @@
+body {
+    background-color: aquamarine;
+}
+
+#mainContainer {
+    width: 900px;
+    margin: 0 auto;
+    background-color: red;
+}
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card {
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px grey;
+}
+
+.card img {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 5px 5px 20px grey;
+}
+
+.card h2 {
+    text-align: center;
+}

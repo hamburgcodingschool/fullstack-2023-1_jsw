@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    background-color: pink;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#aside {
+    position: fixed;
+    background-color: aquamarine;
+    width: 300px;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    transition: 2s;
+}
+
+#aside.hidden {
+    right: -300px;
+}
+
+#mainWrapper {
+    background-color: red;
+}
+
+#mainWrapper section {
+    padding: 0 20px;
+}
+
+#navigationHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: space-between;
+
+    font-size: 24px;
+}
+
+#navigationHeader button {
+    display: block;
+}
+
+#navigationHeader nav {
+    display: none;
+}
+
+#navigationHeader img {
+    width: 80px;
+}
+
+.floatLeft {
+    float: right;
+}
+
+/* DESKTOP starts at 900px */
+@media only screen and (min-width: 900px) {
+    #mainWrapper {
+        width: 800px;
+        margin: 20px auto 0;
+    }
+
+    #navigationHeader button {
+        display: none;
+    }
+    
+    #navigationHeader nav {
+        display: block;
+    }
+
+    #mainWrapper section {
+        padding: 0;
+    }
+    
+}
