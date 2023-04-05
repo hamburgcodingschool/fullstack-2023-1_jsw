@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="loadButton">LOAD</button>
+    <button id="saveButton">SAVE</button>
+
+    <script>
+        let people = [];
+
+        const loadButton = document.querySelector("#loadButton");
+        const saveButton = document.querySelector("#saveButton");
+
+        
+        saveButton.addEventListener("click", function() {
+
+            // LocalStorage only supports TEXT Strings as a value
+            // so we need to convert our `people` Array into a JSON Text String first
+
+            const myJSONString = JSON.stringify(people);
+            localStorage.setItem("people", myJSONString);
+        });
+
+        loadButton.addEventListener("click", function() {
+
+            // When reading it back, we need to convert the text String back into an Array
+            // this is called Parsing the JSON and we do it with the `parse` function
+
+            const myJSONString = localStorage.getItem("people");
+            people = JSON.parse(myJSONString);
+
+            console.log(people);
+        });
+        
+    </script>
+</body>
+</html>
