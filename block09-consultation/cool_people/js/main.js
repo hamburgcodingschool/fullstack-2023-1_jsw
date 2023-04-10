@@ -70,3 +70,11 @@ function loadFromLocalStorage() {
  
 loadFromLocalStorage();
 fillCardContainer();
+
+// JUST AN EXAMPLE FUNCTION, NOT BEING USED IN THIS WEBSITE
+// BECAUSE WE DON'T GET RID OF COOL PEOPLE HERE...
+// 
+// function deleteLastCoolPerson() {
+//     coolPeople.pop();
+//     saveToLocalStorage();
+// }
